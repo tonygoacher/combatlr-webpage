@@ -34,10 +34,10 @@
       <div class="container hero-content">
         <p class="eyebrow"><span class="status-dot"></span> GPS-BASED LASER TAG SYSTEM</p>
         <h1>Own the <span>playfield.</span></h1>
-        <p class="hero-lead">A modular, GPS-enabled laser-tag system. Build your game, deploy your units and take the battle beyond the arena.</p>
+        <p class="hero-lead">A modular, GPS-enabled laser-tag system that implements 'Battle Royale' style gameplay, without needing any site infrastructure. Build your game, deploy your units and take the battle beyond the arena.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#system">Explore CombatLR <span aria-hidden="true">→</span></a>
-          <a class="button button-quiet" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">View the project <span aria-hidden="true">↗</span></a>
+          <a class="button button-quiet" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">View the project on Github<span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-foot">
           <span>ESP32 GAME UNITS</span><i></i><span>GPS POSITIONING</span><i></i><span>INFRARED COMBAT</span>
@@ -53,7 +53,11 @@
           <h2>More than<br><span>laser tag.</span></h2>
         </div>
         <div class="intro-copy">
-          <p class="large-copy"><strong>CombatLR — Combat Laser Royale</strong> — brings together embedded hardware, GPS mapping and a companion mobile app to create flexible outdoor laser-tag experiences.</p>
+          <p class="large-copy"><strong>CombatLR — Combat Laser Royale</strong> — brings together embedded hardware, GPS mapping and a companion mobile app to create flexible outdoor, combat royale laser-tag experiences anywhere, without site networking infrastructure.</p>
+		  <p>With a high res image of your site, and a few GPS coordinates, any area (with good GPS coverage) can be transformed into a battle royal game</p>
+		  <p>Virtual Health, ammo and weapons pickups can be placed around your site map with the mobile app, zones can be placed, sized and given a lifetime. Multiple weapons types
+(currently 8!) are available and up to 16 supported. New weapons can be created simply by adding some images, sounds and editing a config file</p>
+<p>CombatLR uses GPS time to synchronise the placement and movement of zones across all players. No communication is required between player units once the game starts</p>
           <p>Each player carries an ESP32-based game unit. The unit manages infrared firing and hit detection, audio, game state and its display. The mobile app prepares game plans, maps and player configurations, then coordinates the game.</p>
         </div>
       </div>
@@ -68,7 +72,9 @@
       <div class="container">
         <div class="section-heading">
           <div><p class="eyebrow">02 / UNDER THE HOOD</p><h2>One system.<br><span>Three parts.</span></h2></div>
-          <p>Dedicated tools for planning, configuring and running a game — with the ESP32 doing the real-time work in the field.</p>
+          <p>Using an overhead image of the site, and 4 known GPS locations around it. The MapBuilder app (Windows) is used to create a playfield.
+		  The files created by this are then used by the mobile app (Android tablet recommended) to create a game plan. The game plan file is wirelessly exported to the player units, and GPS time 
+		  is used by the player unit to synchronise zone placement and movement across all players. GPS is also used by the player units to access pickups scattered around the zones by the game plan designer</p>
         </div>
         <div class="architecture-flow">
           <article class="architecture-card">
