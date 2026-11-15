@@ -157,3 +157,28 @@
     object-fit: contain;
     flex-shrink: 0;
 }
+
+
+.guide-table.two-column li {
+    display: grid;
+    grid-template-columns: 25% minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.guide-table.two-column li span {
+    min-width: 0;
+}
+
+.guide-table th {
+    text-align: left;
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 2px solid var(--border);
+}
+
+.guide-table td {
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+}

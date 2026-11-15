@@ -93,49 +93,186 @@
 
 
     <section class="guide-section"><h2>3. Place pickups</h2>
-    <p>Make sure a zone is selected and tap on the <span class="ui-pane-text">Zone</span> text if it doesn't say <span class="ui-pane-text">Pickups</span> )</p>
+        <p>Make sure a zone is selected and tap on the <span class="ui-pane-text">Zone</span> text if it doesn't say <span class="ui-pane-text">Pickups</span> )</p>
 
-    <figure class="guide-image">
-        <img src="../assets/images/gettingstarted/pickup-page.jpg"
-            alt="Pickup Screen.">
-            <figcaption>The pickup placement screen.</figcaption>
-    </figure>
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/pickup-page.jpg"
+                alt="Pickup Screen.">
+                <figcaption>The pickup placement screen.</figcaption>
+        </figure>
 
-    <p>Each zone holds its own pickups. A zones pickup only become visible to the player when that zone is acitvated. Pickups on a transitioning zone are displayed during the transition.</p>
-    <p>Add, move edit and delete pickups using the same controls as zones. The current pickup is highlighted in green</p>
+        <p>Each zone holds its own pickups. A zones pickup only become visible to the player when that zone is acitvated. Pickups on a transitioning zone are displayed during the transition.</p>
+        <p>Add, move edit and delete pickups using the same controls as zones. The current pickup is highlighted in green</p>
 
-    <p> CombatLR supports these pickup categories:</p>
-        <ul class="guide-file-list">
-            <li>
-                <img class="pickup-icon" src="../assets/images/gettingstarted/health.webp" alt="">
-                <code>Health</code>
-                <span>Restores player health.</span>
-            </li>
-            <li>
-                <img class="pickup-icon" src="../assets/images/gettingstarted/ammo.webp" alt="">
-                <code>Ammo</code>
-                <span>Supplies ammunition.</span>
-            </li>
-            <li>
-                <img class="pickup-icon" src="../assets/images/gettingstarted/weapon.webp" alt="">
-                <code>Weapon</code>
-                <span>May (or may not) give a new weapon.</span>
-            </li>
-            <li>
-                <img class="pickup-icon" src="../assets/images/gettingstarted/auto.webp" alt="">
-                <code>Auto</code>
-                <span>The player unit allocates a random subset of these pickups at game time.See <a class="guide-link" href="#pickup-allocation">Pickup Allocation</a></span>
-            </li>
-        </ul>
-    <p>Think about how players will move through the site. Spread useful pickups around the play area and avoid placing them somewhere that cannot be reached safely.</p>
+        <p> CombatLR supports these pickup categories:</p>
+            <ul class="guide-file-list">
+                <li>
+                    <img class="pickup-icon" src="../assets/images/gettingstarted/health.webp" alt="">
+                    <code>Health</code>
+                    <span>Restores player health.</span>
+                </li>
+                <li>
+                    <img class="pickup-icon" src="../assets/images/gettingstarted/ammo.webp" alt="">
+                    <code>Ammo</code>
+                    <span>Supplies ammunition.</span>
+                </li>
+                <li>
+                    <img class="pickup-icon" src="../assets/images/gettingstarted/weapon.webp" alt="">
+                    <code>Weapon</code>
+                    <span>May (or may not) give a new weapon.</span>
+                </li>
+                <li>
+                    <img class="pickup-icon" src="../assets/images/gettingstarted/auto.webp" alt="">
+                    <code>Auto</code>
+                    <span>The player unit allocates a random subset of these pickups at game time.See <a class="guide-link" href="#pickup-configuration">Pickup Configuration</a></span>
+                </li>
+            </ul>
+        <p>Think about how players will move through the site. Spread useful pickups around the play area and avoid placing them somewhere that cannot be reached safely.</p>
 
-    <p>Random allocation works really well. The ESP32 software ensures pickups are spaced evenly around the map.</p>
-    
+        <p>Random allocation works really well. The ESP32 software ensures pickups are spaced evenly around the map and distributed between health, ammo and weapons. See <a class="guide-link" href="#pickup-configuration">Pickup Configuration</a></p>    
+
+ 
     </section>
 
+    <section class="guide-section" id="pickup-configuration">
+        <h2>4. Pickup Configration</h2>
+        <p>In Pickups mode, select Edit to change the current pickup's configuration.</p>
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/pickup-config.webp"
+                alt="Pickup Configuration.">
+                <figcaption>The pickup configuration screen.</figcaption>
+        </figure>
 
-    </span></li><li><code>Ammo</code><span>Supplies ammunition.</span></li><li><code>WeaponBonus</code><span>Provides a weapon-related bonus.</span></li><li><code>Auto</code><span>Allows the game to choose a pickup type.</span></li></ul><p>Think about how players will move through the site. Spread useful pickups around the play area and avoid placing them somewhere that cannot be reached safely.</p></section>
-<section class="guide-section"><h2>4. Review weapons and game timing</h2><p>Configure the available weapon pickups and their chances, along with the game timing and any start delay. Check that the zone schedule, pickup distribution and weapon settings support the style of match you intend to run.</p><p>Save the game plan and review it before transferring it to the player units.</p></section>
+         <ul class="guide-table two-column">
+                <li>
+                    <code>Type</code>
+                    <span>The pickup type.</span>
+                </li>
+                <li>
+                    <code>Spawn Time</code>
+                    <span>If this is zero, the pickup appears as soon as it's parent zone activates. If >0, the pickup becomes visible <code>Spawn Time</code> seconds
+                    after the parent zone becomes active, and it appears to all players.</span>
+                </li>
+                <li>
+                    <code>Lifespan</code>
+                    <span>If the pickup has a none zero spawn time, the pickup remains active for this time after spawn time. 0 = permanent until zone is deactivated.</span>
+                </li>
+
+            </ul>
+
+            <p>Tap on the required field to edit it.</p>
+
+    </section>   
+    
+    <section class="guide-section" id="pickup-configuration">
+        <h2 zone-timelines>5. Zone Timelines</h2>
+        <p>The zone timeline is the most important part of a gameplan. It defines when zones appear, when they start to move and how long they last.</p>
+        <p>Select <span class="ui-button">Timeline</span> in <span class="ui-pane-text">Zone</span> mode to view the timeline. It is displayed as a Gantt chart style diagram, with zones displayed in blue and transitions in yellow</p>     
+        <p>Time proceeds from left to right. Use the <span class="ui-button">+/-</span> buttons to zoom in/out. Side swipe to pan across the timeline.</p>
+
+        <p>A well formed timeline should look like this</p>
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/gantt.webp"
+            alt="Timeline Screen.">
+            <figcaption>Timeline.</figcaption>
+        </figure>
+
+        <p>Select a zone to edit the zone configuration screen</p>
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/zone-config.webp"
+            alt="Zone configuration screen.">
+            <figcaption>Zone configuration screen.</figcaption>
+        </figure>
+
+        <p>The important part of the timelne is the transition time. Lets observe a timeline where 3 zones have been added from the game plan screen, but have no time details set. By default,
+            the game plan editor places them consequtively on the timeline
+        </p>
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/default-timeline.webp"
+            alt="Default Timelinen.">
+            <figcaption>Default timeline with no transitions.</figcaption>
+        </figure>
+
+        <p>The zone times are:
+        </p>
+
+        
+        <table class="guide-table">
+        <thead>
+            <tr>
+                <th>Zone</th>
+                <th>Start Time</th>
+                <th>Lifespan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>10</td>
+                <td>5</td>
+            </tr>
+        </tbody>
+        </table>
+
+        <p>A zone begins its transition time when the next zone start time occurs within its lifespan. Current zone is always active for its entire lifespan</p>
+        <p>The time at which a zone transition starts and how long the transition lasts are defined by the current zone lifespan and the NEXT zone start time</p>
+        <p>Eg. We want zone 1 to start its transition at 4 minutes, the transition to last for 2 minutes. </p>
+        <p>So, 6 mins in total (4 + 2), so lifespan = 6mins</p>
+        <p>The transition time is set by having the NEXT zones start time occur within the lifespan of zone 1</p>
+        <p>The time to transition from Z1 to Z2 is calculated as (current zone start + current zone lifespan) - next zone start time</p>
+        <p>So with a transition time of 2 mins, The next zone start time is (current zone start time + current zone lifespan) - transition time </p>
+        <p>Zone 2 start time is (0 + 6) - 2 = 4</p>
+        <p>So let's set zone 1's lifetime to 6 mins</p>
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/zone1-lifetime.webp"
+            alt="Set Zone 1 lifespan">
+            <figcaption>Set zone 1 lifespan.</figcaption>
+        </figure>
+
+        <p>The Gantt chart updates immediately to reflect this</p>
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/z1-lifespan-6min.webp"
+            alt="Set Zone 1 lifespan">
+            <figcaption>Set zone 1 lifespan.</figcaption>
+        </figure>
+
+        <p>But we want a Z1-Z2 transition time of 2 minutes, so we need to change Z2 start time to 4.</p>
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/zone2-lifespan.webp"
+            alt="Set Zone 2 start time">
+            <figcaption>Set zone 2 start time.</figcaption>
+        </figure>
+    
+        <p>And the chart now shows Z1 with a lifespan of 6 mins, and a transition time of 2mins</p> 
+
+        <figure class="guide-image">
+            <img src="../assets/images/gettingstarted/proper-timeline.webp"
+            alt="Transition time of 2 mins">
+            <figcaption>Transition time as 2 mins</figcaption>
+        </figure>
+
+        <p>Note that Z2 will not appear until 6 minutes, so if we nneed to extend the time it is active, we need to extend it's lifespan.</p>
+        <p>Experiment with this screen until you're confident with it. As you change start times and lifespans, the software will attempt to change these values in 'downstream' zones to prevent gaps, so the zones may move around on the timeline as you experiment.</p>
+
+        <div class="guide-callout guide-warning"><strong>Before you save the game plan check the timeline has no gaps!!.</strong></div>
+
+    </section>
 <div class="guide-callout guide-warning"><strong>Before you transfer</strong><p>Check the selected map, player IDs, team assignments, zone timeline, pickup locations and game settings. A plan mismatch on a player unit should be resolved before starting the match.</p></div>
 <div class="guide-next"><span class="eyebrow">NEXT STEP</span><h2>Transfer the files</h2><p>Load the map and game plan onto the player units ready for the session.</p><a class="button button-primary" href="transfer-files.html">Transfer files <span>→</span></a></div>
 </div></main>
