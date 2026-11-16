@@ -18,7 +18,7 @@
 └── CombatLR/
     └── AlexandraPark/</pre><p>Copy the MapBuilder site package files, map.bmp and map.json, into the <code>AlexandraPark</code> folder using Windows File Explorer. 
         The mobile app presents a folder list to select the plan you wish to use.</p></section>
-<section class="guide-section"><h2>2. Start with a project and map</h2><p>Open CombatLR Mobile and select the game project you want to work on.</p>
+<section class="guide-section"><h2>1. Start with a project and map</h2><p>Open CombatLR Mobile and select the game project you want to work on.</p>
     <figure class="guide-image">
     <img src="../assets/images/gettingstarted/mainmenu.webp"
          alt="The main menu">
@@ -45,18 +45,99 @@
     </figure> 
 
 </section>
-<section class="guide-section"><h2>2. Design the zones</h2>
+
+
+
+<section class="guide-section"><h2>3. The Game Plan Screen</h2>
+    
+    <figure class="guide-image">
+        <img src="../assets/images/mapbuilder/mapbuilder.jpg"
+            alt="The mapbuilder screen.">
+
+    </figure>
+
+    <p>The controls are:</p>
+
+<h3>Game Plan Pane</h3>
+<ul class="guide-file-list">
+    <li>
+        <span class="ui-button">New</span>
+        <span>Clears all zones, pickups and pickup allocation settings in the currently loaded game plan.</span>
+    </li>
+    <li>
+        <span class="ui-button">Save</span>
+        <span>Save the currently loaded game plan to the device.</span>
+    </li>
+    <li>
+        <span class="ui-button">Pickup Allocation</span>
+        <span>Enters the pickup allocation screen.</span>
+    </li>
+    <li>
+        <span class="ui-button">Set Home</span>
+        <span>Sets the home location for the current game plan.</span>
+    </li>
+</ul>
+
+<h3>Game Object Pane</h3>
+<ul class="guide-file-list">
+    <li>
+        <span class="ui-pane-text">Zone</span><span class="ui-pane-text">Pickups</span>
+        <span>Indicates the current object placement/edit mode. Click here to select the mode.</span>
+    </li>
+    <li>
+        <span class="ui-button">Add</span>
+        <span>Add a new Zone or Pickup at the next selected point on the map.</span>
+    </li>
+    <li>
+        <span class="ui-button">Delete</span>
+        <span>Delete the currently selected Zone/Pickup.</span>
+    </li>
+    <li>
+        <span class="ui-button">Edit</span>
+        <span>Edit the properties of the currently selected Zone/Pickup.</span>
+    </li>
+        <li>
+        <span class="ui-button">Timeline</span>
+        <span>Enter the timeline screen.</span>
+    </li>
+</ul>
+
+</section>    
+
+<section class="guide-section"><h2>4. Set the home position</h2>
+    
+    <figure class="guide-image">
+        <img src="../assets/images/gettingstarted/plan-edit-screen.jpg"
+            alt="Set the home position">
+
+    </figure>
+
+    <p>All coordinates in the game plan are stored as meters from the home position. The home position is shown as the red house icon.</p>
+    <p>On a new gameplan, the home position will be automatically placed in the centre of the map. The home position is a great 
+        location to marshall players at the start and end of the game, so choose a good position. Do this before placing any zones or pickups!</p>
+    
+    <p>To change the home position, select <span class="ui-button">Set Home</span> then tap the position on the map.</p>
+
+</section>
+
+<section class="guide-section"><h2>5. Set the start delay</h2>
+    
+    <p>The start delay is the player dispersal time. When the game is started, the players have this time to position themselves on the site.  The placement of Zone 1 and it's icons are displayed
+        on the player map. No pickups are processed. No shots can be fired.
+    </p>
+    
+    <p>To change the home position, select <span class="ui-button">Set Home</span> then tap the position on the map.</p>
+
+</section>
+
+
+<section class="guide-section"><h2>6. Create the zones</h2>
     
     <figure class="guide-image">
         <img src="../assets/images/gettingstarted/plan-edit-screen.jpg"
             alt="The Game plan editor screen.">
 
     </figure>
-
-    <p>The most important part of the game plan is the home position, shown as the red house icon. On a new gameplan, the home position will be automatically placed in the centre of the map. The home position is a good 
-        point to marshall players at the start and end of the game, so choose a good position. Do this before placing any zones or pickups!</p>
-    
-    <p>To change the home position, select <span class="ui-button">Set Home</span> then tap the position on the map.</p>
 
     <p>
         The editor mode is zones or pickups. The <span class="ui-pane-text">GAME OBJECT</span> pane displays <span class="ui-pane-text">Pickups</span> 
@@ -73,7 +154,6 @@
     <p>Pickups cannot be added without a zone. To add a new zone, make sure you are in <span class="ui-pane-text">Zone</span> mode and select 
         <span class="ui-button">Add</span>. Then tap on the map to place the new zone. The current zone is displayed as a green circle on the map. To move it, simply tap another position.</p>
 
-</a></p>
 
     <figure class="guide-image">
         <img src="../assets/images/gettingstarted/empty-zone.jpg"
@@ -81,7 +161,7 @@
 
     </figure>
 
-    <p>Select a zone then press <span class="ui-button">Edit</span>to change a zones radius, start time and lifespan. See <a class="guide-link" href="#zone-timelines">
+    <p>Select a zone then press <span class="ui-button">Edit</span>to change a zones radius, start time and lifespan. It's better to just set the radius here, edit the start and lifespan fields in <a class="guide-link" href="#zone-timelines">
     Zone Timelines</a></p>   
     
     <p><span class="ui-button">Delete</span> removes the currently selected zone AND ALL ITS PICKUPS. You'll be asked to confirm before proceeding. Note that deleting a zone cane leave
@@ -92,7 +172,7 @@
 
 
 
-    <section class="guide-section"><h2>3. Place pickups</h2>
+    <section class="guide-section"><h2>7. Place pickups</h2>
         <p>Make sure a zone is selected and tap on the <span class="ui-pane-text">Zone</span> text if it doesn't say <span class="ui-pane-text">Pickups</span> )</p>
 
         <figure class="guide-image">
@@ -124,7 +204,7 @@
                 <li>
                     <img class="pickup-icon" src="../assets/images/gettingstarted/auto.webp" alt="">
                     <code>Auto</code>
-                    <span>The player unit allocates a random subset of these pickups at game time.See <a class="guide-link" href="#pickup-configuration">Pickup Configuration</a></span>
+                    <span>The player unit allocates a random subset of these pickups at the start of a game.See <a class="guide-link" href="#pickup-configuration">Pickup Configuration</a></span>
                 </li>
             </ul>
         <p>Think about how players will move through the site. Spread useful pickups around the play area and avoid placing them somewhere that cannot be reached safely.</p>
@@ -135,7 +215,7 @@
     </section>
 
     <section class="guide-section" id="pickup-configuration">
-        <h2>4. Pickup Configration</h2>
+        <h2>8. Pickup Configuration</h2>
         <p>In Pickups mode, select Edit to change the current pickup's configuration.</p>
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/pickup-config.webp"
@@ -164,19 +244,20 @@
 
     </section>   
     
-    <section class="guide-section" id="pickup-configuration">
-        <h2 zone-timelines>5. Zone Timelines</h2>
+    <section class="guide-section" id="zone-timelines">
+        <h2 id=zone-timelines>5. Zone Timelines</h2>
         <p>The zone timeline is the most important part of a gameplan. It defines when zones appear, when they start to move and how long they last.</p>
-        <p>Select <span class="ui-button">Timeline</span> in <span class="ui-pane-text">Zone</span> mode to view the timeline. It is displayed as a Gantt chart style diagram, with zones displayed in blue and transitions in yellow</p>     
+        <p>In the <span class="ui-pane-text">GAME OBJECT</span>pane,  select <span class="ui-button">Timeline</span> in <span class="ui-pane-text">Zone</span> mode to view the timeline. It is displayed as a Gantt chart style diagram, with zones displayed in blue and transitions in yellow</p>     
         <p>Time proceeds from left to right. Use the <span class="ui-button">+/-</span> buttons to zoom in/out. Side swipe to pan across the timeline.</p>
 
-        <p>A well formed timeline should look like this</p>
+        <p>A well formed timeline should look like this:</p>
 
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/gantt.webp"
             alt="Timeline Screen.">
             <figcaption>Timeline.</figcaption>
         </figure>
+        <p>The zone active times (Blue bar + right hand side yellow bar) and the transition times should be reasonable for your site.</p>
 
         <p>Select a zone to edit the zone configuration screen</p>
 
@@ -186,8 +267,8 @@
             <figcaption>Zone configuration screen.</figcaption>
         </figure>
 
-        <p>The important part of the timelne is the transition time. Lets observe a timeline where 3 zones have been added from the game plan screen, but have no time details set. By default,
-            the game plan editor places them consequtively on the timeline
+        <p>The important part of the timeline is the transition time. Lets observe a timeline where 3 zones have been added from the game plan screen, but have no time details set. By default,
+            the game plan editor places them consecutively on the timeline
         </p>
 
         <figure class="guide-image">
@@ -231,7 +312,7 @@
         <p>The time at which a zone transition starts and how long the transition lasts are defined by the current zone lifespan and the NEXT zone start time</p>
         <p>Eg. We want zone 1 to start its transition at 4 minutes, the transition to last for 2 minutes. </p>
         <p>So, 6 mins in total (4 + 2), so lifespan = 6mins</p>
-        <p>The transition time is set by having the NEXT zones start time occur within the lifespan of zone 1</p>
+        <p>The time the transition takes, the transition time, is set by having the NEXT zones start time occur within the lifespan of zone 1. The next zone will not activate until the previous zone has completed its transition time.</p>
         <p>The time to transition from Z1 to Z2 is calculated as (current zone start + current zone lifespan) - next zone start time</p>
         <p>So with a transition time of 2 mins, The next zone start time is (current zone start time + current zone lifespan) - transition time </p>
         <p>Zone 2 start time is (0 + 6) - 2 = 4</p>
@@ -267,7 +348,7 @@
             <figcaption>Transition time as 2 mins</figcaption>
         </figure>
 
-        <p>Note that Z2 will not appear until 6 minutes, so if we nneed to extend the time it is active, we need to extend it's lifespan.</p>
+        <p>Note that Z2 will not appear until 6 minutes, so if we need to extend the time it is active, we need to extend it's lifespan.</p>
         <p>Experiment with this screen until you're confident with it. As you change start times and lifespans, the software will attempt to change these values in 'downstream' zones to prevent gaps, so the zones may move around on the timeline as you experiment.</p>
 
         <div class="guide-callout guide-warning"><strong>Before you save the game plan check the timeline has no gaps!!.</strong></div>

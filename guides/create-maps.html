@@ -8,14 +8,105 @@
 <body class="guide-page">
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/images/combatlr-logo.png" alt="CombatLR"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="../index.html#game">The game</a><a href="../index.html#getting-started">Getting started</a><a href="../index.html#resources">Resources</a><a class="nav-cta" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">GitHub ↗</a></nav></div></header>
 <main id="main" class="guide-main"><div class="container guide-container">
+
 <a class="guide-back" href="../index.html#getting-started">← Getting started</a>
 <p class="eyebrow">GETTING STARTED / 01</p><h1>Create <span>maps.</span></h1>
-<p class="guide-intro">Every CombatLR game starts with a map of the place you intend to play. MapBuilder turns a suitable image into a GPS-calibrated site package that the mobile app and player units can use.</p>
+
+<p class="guide-intro">Every CombatLR game starts with a map of the place you intend to play. 
+    MapBuilder turns a suitable image into a GPS-calibrated site package that the mobile app and player units can use.</p>
+
 <div class="guide-callout"><strong>You'll need</strong><p>A Windows PC, CombatlrMapBuilder, a source map image, and the latitude/longitude of four identifiable points visible on that image.</p></div>
-<section class="guide-section"><h2>1. Prepare your map image</h2><p>Choose a clear image that covers the intended play area. It should show enough surrounding detail to identify calibration points accurately. Make sure you have permission to use the image for your project.</p><p>Pick four points that are easy to recognise both on the image and in the real world. Spread them around the area rather than clustering them together. You will enter the GPS coordinates for each point in MapBuilder.</p></section>
-<section class="guide-section"><h2>2. Create a MapBuilder project</h2><ol><li>Open <strong>CombatlrMapBuilder</strong> on Windows.</li><li>Use the <strong>File</strong> menu to open or create a project.</li><li>Open your source map image.</li><li>Mark calibration points <strong>A, B, C and D</strong> on the image.</li><li>Enter the latitude and longitude for each corresponding real-world point.</li></ol><p>MapBuilder uses all four image/GPS correspondences to calculate the map transform. You do not need to enter a manual rotation angle.</p></section>
-<section class="guide-section"><h2>3. Set the playable area</h2><p>Move and resize the playfield rectangle so it covers the area you want to use. The playfield is exported in the fixed 4:3 format expected by the CombatLR map workflow. Zoom the source image when placing calibration points or adjusting the crop.</p><p>Save the editable project if you may want to adjust the calibration or crop later. The editable project is separate from the files used by the game.</p></section>
-<section class="guide-section"><h2>4. Export the site package</h2><p>When the image, playfield and all four calibration points are ready, choose <strong>Export Site Package</strong>. MapBuilder creates two files in the output directory:</p><ul class="guide-file-list"><li><code>map.bmp</code><span>1280 × 960 RGB565 map image for the player unit.</span></li><li><code>map.json</code><span>Map metadata, including the crop, scale, geographic bounds and calibration points.</span></li></ul><p>Keep the two exported files together. The mobile app uses the map package when you prepare a game plan.</p></section>
+
+<section class="guide-section"><h2>1. Prepare your map image</h2>
+    <p>Choose a clear image that covers the intended play area. It should show enough surrounding detail to identify calibration points accurately.
+         Make sure you have permission to use the image for your project.</p>
+      <section>
+        <h3>Obtaining Map Images</h4>
+
+            <p>
+                Google Earth should NOT be used to obtain map images for CombatLR.
+                Downloading these images to the ESP32 would potentially
+                break the Google's terms and conditions.
+            </p>
+
+            <p>Therefore, under no circumstances should you:</p>
+
+            <ol>
+                <li>Place four markers around the area you wish to use.</li>
+                <li>Record the GPS coordinates of those markers.</li>
+                <li>Take a screenshot of the resulting Google Earth image.</li>
+                <li>Use those coordinates to calibrate the map.</li>
+                <li>Use the exported files in your CombatLR system.</li>
+            </ol>
+
+            <p>
+                We accept no responsibility for anyone who might accidentally
+                do these things.
+            </p>
+
+            <p>You could even use a drone to capture the site and place 4 brightly coloured markers at known positions.</p>
+            
+    </section>
+         
+         <p>Pick four points that are easy to recognise both on the image and in the real world.
+             Spread them around the area rather than clustering them together. You will enter the GPS coordinates for each point in MapBuilder.</p>
+</section>
+<section class="guide-section">
+    <h2>2. The mapbuilder interface</h2>
+    <figure class="guide-image">
+        <img src="../assets/images/mapbuilder/mapbuilder.jpg"
+            alt="The MapBuilder interface">
+    </figure> 
+
+    <ul class="guide-file-list">
+
+    <li>
+        <span class="win-ui-button">Open Map Image</span>
+        <span>Opens the source image that will be used to create the map package. JPG and PNG formats supported.</span>
+    </li>
+    <li>
+        <span class="win-ui-button">Clear Calibration Points</span>
+        <span>Removes all calibration points from the project.</span>
+    </li>
+    <li>
+        <span class="win-ui-button">Export Site Package</span>
+        <span>Exports the map.bmp and map.json files required by the CombatLR.mobile application.</span>
+    </li>
+    <li>
+        <span class="win-ui-button">A Lat:</span> <span class="win-ui-button">A Lon:</span>etc. The Lat and Long coordinates of the calibration points.
+    </li>
+</ul>
+
+    <p>The green rectangle is the map image that will be exported to the player units. Resize it with the white squares in the corners.</p>
+    <p>Drag the map selection area with the mouse.</p>
+    <p>Use the mouse wheel to zoom the map.</p>
+    <p>Move the map image with the horizontal and vertical scroll bars.</p>
+
+
+</section>  
+
+<section class="guide-section">
+    <h2>3. Create a MapBuilder project</h2>
+     <ol>
+        <li>Open <strong>CombatlrMapBuilder</strong> on Windows.
+        </li>
+        <li>Use the <strong>File</strong> menu to open or create a project.</li>
+        <li>Open your source map image.</li>
+        <li> <p>Move and resize the playfield rectangle so it covers the area you want to use. The playfield is exported in the fixed 4:3 format 
+        expected by the CombatLR map workflow. .</p>
+        <li>Save the editable project if you may want to adjust the calibration or crop later. 
+            The editable project is separate from the files used by the game.
+        </li>            
+    </ol>
+    <p>MapBuilder uses all four image/GPS correspondences to calculate the map transform. You do not need to enter a manual rotation angle.</p>
+</section>
+
+
+<section class="guide-section">
+    <h2>4. Export the site package</h2>
+    <p>When the image, playfield and all four calibration points are ready, choose <strong>Export Site Package</strong>. MapBuilder 
+        creates two files in the output directory:</p><ul class="guide-file-list"><li><code>map.bmp</code><span>1280 × 960 RGB565 map image for the player unit.</span>
+    </li><li><code>map.json</code><span>Map metadata, including the crop, scale, geographic bounds and calibration points.</span></li></ul><p>Keep the two exported files together. The mobile app uses the map package when you prepare a game plan.</p></section>
 <div class="guide-callout guide-warning"><strong>Check before moving on</strong><p>Confirm that the exported map covers the intended play area and that the four GPS coordinates are correct. A calibration error affects player positions and zone locations throughout the game.</p></div>
 <div class="guide-next"><span class="eyebrow">NEXT STEP</span><h2>Create a gameplan</h2><p>With your site package ready, configure players, teams, zones and pickups.</p><a class="button button-primary" href="create-gameplans.html">Create gameplans <span>→</span></a></div>
 </div></main>

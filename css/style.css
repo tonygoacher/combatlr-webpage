@@ -115,6 +115,18 @@
     letter-spacing: 0.04em;
 }
 
+.win-ui-button {
+    display: inline-block;
+    padding: 2px 7px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #a5a4a6;
+    color: #000000;
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
 .ui-pane-text {
     display: inline-block;
     padding: 2px 7px;
