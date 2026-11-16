@@ -8,13 +8,59 @@
 <body class="guide-page">
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/images/combatlr-logo.png" alt="CombatLR"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="../index.html#game">The game</a><a href="../index.html#getting-started">Getting started</a><a href="../index.html#resources">Resources</a><a class="nav-cta" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">GitHub ↗</a></nav></div></header>
 <main id="main" class="guide-main"><div class="container guide-container">
-<a class="guide-back" href="../index.html#getting-started">← Getting started</a><p class="eyebrow">GETTING STARTED / 03</p><h1>Transfer <span>files.</span></h1>
-<p class="guide-intro">Once the map and game plan are ready, copy the required project files to the ESP32 player units. CombatLR Mobile discovers units and handles the setup and transfer workflow.</p>
-<div class="guide-callout"><strong>You'll need</strong><p>CombatLR Mobile, the saved game project, powered-on player units and a local network that allows the phone and units to communicate during setup.</p></div>
-<section class="guide-section"><h2>1. Prepare the project files</h2><p>Check that the selected game project contains the map package and the saved game plan for the match. The MapBuilder export consists of <code>map.bmp</code> and <code>map.json</code>; keep these together with the game plan.</p><p>Use the final version of the project you intend to play. If you make changes after transferring, transfer the updated files again so the units are using the same plan.</p></section>
-<section class="guide-section"><h2>2. Power up and discover the units</h2><p>Power on the ESP32 player units and open the relevant device/game control view in CombatLR Mobile. The app discovers units on the local network using UDP broadcast. The phone and units need network connectivity to one another for discovery and setup commands.</p><p>Check that the expected devices appear. The app reports each unit's player and team information, online state and the game-plan name/version it currently has loaded.</p></section>
-<section class="guide-section"><h2>3. Put the unit into file-transfer mode</h2><p>File transfer uses the unit's FTP service. A unit in FTP mode is identified in the mobile app as <strong>FTP MODE!</strong>; normal player controls are unavailable while it is in that mode.</p><p>Use the device's documented FTP-mode procedure and the credentials configured for your firmware build. Do not guess or share device credentials. Once the unit is ready, select it in the app and transfer the required project files.</p></section>
-<section class="guide-section"><h2>4. Check the transfer and plan status</h2><p>Wait for each file transfer to finish. Return the unit to its normal operating mode when file transfer is complete, then allow it to announce itself to the mobile app again.</p><p>Confirm that the unit is online and reports the expected game-plan name and version. Resolve any plan mismatch before starting the match. Repeat for each player unit that needs the map or game plan.</p></section>
+<a class="guide-back" href="../index.html#getting-started">← Getting started</a><p class="eyebrow">GETTING STARTED / 03</p>
+<h1>Transfer <span>files.</span></h1>
+<p class="guide-intro">Once the map and game plan are ready, the required project files need to be copied to the ESP32 player units. CombatLR Mobile
+     discovers units and handles the setup and transfer workflow.</p>
+
+<div class="guide-callout"><strong>You'll need</strong><p> 
+    <ol>
+        <li>
+           A completed CombatLR game plan pakage.
+        </li>
+        <li>
+            A WiFi network running DHCP.
+        </li>
+        <li>
+            Game units configured with the SSID and password of the network.
+        </li>
+        <li>
+            The CombatLR mobile device on this network. Try the hotspot function of your android device. See guide for setting player unit network credentials.
+        </li>
+    </ol>
+</div>
+
+<section class="guide-section">
+    <h2>1. Prepare the project files</h2>
+    <p>Check that the selected game project contains the map package and the saved game plan for the match. The MapBuilder
+         export consists of <code>map.bmp</code>,<code>map.json</code> and <code>gameplan.json</code>; keep these together.</p><p>Use the final version 
+            of the project you intend to play. If you make changes after transferring, transfer the updated files 
+            again so the units are using the same plan.</p>
+</section>
+
+<section class="guide-section"><h2>2. Power up and discover the units</h2>
+    <p>Hold the <strong>Trigger</strong> and <strong>Reload</strong> switches and power on the player unit. Hold for at least 2 seconds until the FTP screen appears.</p>
+    <p>The player unit should connect to the wifi network and appear on the file transfer screen.</p>
+    <p>Check that the expected devices appear. The app reports each MAC, IP address and current game plan. </p>
+ 
+
+    <figure class="guide-image">
+        <img src="../assets/images/transfer-files/transfer.webp"
+            alt="The file transfer screen.">
+    </figure>
+
+    <p>Press <span class="ui-button">SET CREDENTIALS</span>to change the FTP credentials the game unit requires for FTP transfer.See guide for setting player unit FTP credentials.</p>
+    <p>Select the blue checkbock for each player unit to be updated.  Press <span class="ui-button">UPDATE SELECTED DEVICES</span>to start the transfer.</p>
+</section>
+
+
+<section class="guide-section">
+    <h2>3. Check the transfer and plan status</h2>
+    <p>Wait for each file transfer to finish. The player unit pane will be removed from the display grid on successful transfer.</p>
+
+    <p>When all transfers are complete, return to the Game Control screen and check the correct game plan is in place on each unit.</p>
+</section>
+
 <div class="guide-callout guide-warning"><strong>Setup networking is not game infrastructure</strong><p>The local network is used to discover, configure and transfer files to the units before play. The match itself does not require continuous communication between player units or a venue-installed network, base station or central server. GPS coverage is still required for location-based gameplay.</p></div>
 <div class="guide-next"><span class="eyebrow">NEXT STEP</span><h2>Manage the game</h2><p>Verify the players, start the match and keep an eye on game progress.</p><a class="button button-primary" href="manage-games.html">Manage games <span>→</span></a></div>
 </div></main>

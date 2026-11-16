@@ -8,13 +8,72 @@
 <body class="guide-page">
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/images/combatlr-logo.png" alt="CombatLR"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="../index.html#game">The game</a><a href="../index.html#getting-started">Getting started</a><a href="../index.html#resources">Resources</a><a class="nav-cta" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">GitHub ↗</a></nav></div></header>
 <main id="main" class="guide-main"><div class="container guide-container">
-<a class="guide-back" href="../index.html#getting-started">← Getting started</a><p class="eyebrow">GETTING STARTED / 04</p><h1>Manage <span>games.</span></h1>
-<p class="guide-intro">The game control tools bring the players and the match together. Use CombatLR Mobile to check the selected plan, verify connected units, start the session and monitor the moving safe zone.</p>
-<div class="guide-callout"><strong>Before you begin</strong><p>Have a completed game plan transferred to the player units. Make sure the units have GPS reception and that the intended players are ready.</p></div>
-<section class="guide-section"><h2>1. Select the game plan</h2><p>Open the game control screen in CombatLR Mobile and check the selected project and game plan. Confirm that the map and plan are the ones prepared for this session.</p></section>
-<section class="guide-section"><h2>2. Check the player units</h2><p>Allow the app to discover the powered-on units. Check that each expected player is online, has the correct player ID and team, and reports the current game-plan name and version.</p><p>Resolve duplicate player IDs and plan mismatches. An offline unit cannot be verified. A unit showing <strong>FTP MODE!</strong> is in file-transfer mode and is not ready for normal game control.</p></section>
-<section class="guide-section"><h2>3. Start the match</h2><p>When the players and units are ready, use <strong>Start Game</strong> from the game control screen. The mobile app sends the start command to the selected online units and reports which units acknowledge it.</p><p>Check the result rather than assuming every unit started successfully. Investigate any unit that fails to acknowledge the command before the players begin.</p></section>
-<section class="guide-section"><h2>4. Monitor game progress</h2><p>Open the Game Progress screen after the game has started. It presents the current map and active zone, including a zone transition when one is in progress. It also shows the time remaining in the current zone, the time until the next zone and the mobile device's current position.</p><p>The progress display is tied to the start time used for the match. Zone timing is driven by GPS time on the player units, so the game does not depend on a central server continually coordinating the players.</p></section>
+
+<a class="guide-back" href="../index.html#getting-started">← Getting started</a>
+<p class="eyebrow">GETTING STARTED / 04</p><h1>Manage <span>games.</span></h1>
+<p class="guide-intro">The game control tools bring the players and the match together. Use CombatLR Mobile to check the selected plan,
+     verify connected units, start the session and monitor the moving safe zone.</p>
+
+<div class="guide-callout">
+    <strong>Before you begin</strong>
+    <p>Have a completed game plan transferred to the player units. Make sure the all players have GPS reception and are connected to the same WiFi network.</p>
+</div>
+<section class="guide-section">
+    <h2>1. Select the game plan</h2>
+    <p>Open the game control screen in CombatLR Mobile and check the selected project and game plan. Confirm that the map and plan are the ones prepared for this session.</p>
+</section>
+<section class="guide-section">
+    <h2>2. Check the player units</h2>
+    <p>Allow the app to discover the powered-on units. Check that each expected player is online</p>
+       
+    <figure class="guide-image">
+        <img src="../assets/images/game-control/allok.webp"
+            alt="The player discovery screen.">
+    </figure>
+
+    <p>'PLAN:Name and Version' shows the currently selected game plan.</p>
+    <p>All player units should appear on the player grid. Each pane on the grid shows the player unit ID, Team (Red,Green, Blue, Yellow), Game plan name and version, and whether friendly fire is enabled.</p>      
+    <p>The pane background colour shows the team allocated to that player.</p>
+    <p>Each unit game plan should match the currently selectd plan in both name and version. 'Current Plan' should appear in each unit pane on the grid.</p>
+    <p>Change a player team by selecting the team name of the player you wish to change, and select a new team. The new team will be sent to the player unit immediately.</p>
+    <p>Change the player ID by selecting the player ID field and entering a new value. All player ID's should be unique, regardless of team. The new ID will be sent to the player unit immediately.</p>
+    <p>Friendly fire state is shown as a red icon with a red crosshair. A green icon indicates friendly fire is off for that player.  Click the icon to toggle it for that player.</p>
+    <p>Press <span class="ui-button">Friendly Fire On</span> or <span class="ui-button">Friendly Fire Off</span> to change the setting for all players.</p>
+    <p><strong>Note that changing friendly fire, team or player ID is a persistent change. Player units retain these settings after power down.</strong></p>
+
+    <p>A game unit with a duplicate ID or a plan mismatch will be displayed with a red border. Resolve this before starting a game.</p>
+  
+
+    <figure class="guide-image">
+    <img src="../assets/images/game-control/mismatch.webp"
+        alt="The player discovery screen.">
+    </figure>
+
+    <p>A game unit that goes offline will be displayed with a grey pane.</p>
+         
+    <p>Resolve duplicate player IDs and plan mismatches. An offline unit cannot be verified. A unit showing <strong>FTP MODE!</strong> 
+        is in file-transfer mode and is not ready for normal game control.</p>
+</section>
+<section class="guide-section">
+    <h2>3. Start the match</h2>
+    <p>When the players and units are ready, use <span class="ui-button">Game Start</span> from the game control screen. The mobile app sends the start command to 
+        game units displayed on the grid. Game units that receive the game start command will be removed from the grid.</p>
+
+    <p>If units remain on the grid after a <span class="ui-button">Game Start</span>, use <span class="ui-button">Late Start</span> to retry.</p>
+    <p><span class="ui-button">Late Start</span> can be used to bring a player into the game at any time. The software automatically brings the player onto the game field
+    at the same game state as the other players. Use <span class="ui-button">Game Progress</span> to ensure they are activated within a valid zone! </p>
+    
+</section>
+
+<section class="guide-section">
+    <h2>4. Monitor game progress</h2>
+    <p>Open the Game Progress screen after the game has started. It presents the current map and active zone,
+         including a zone transition when one is in progress. It also shows the time remaining in the current zone, 
+         the time until the next zone and the mobile device's current position.</p><p>The progress display is tied to the start time used for the match.
+             Zone timing is driven by GPS time on the player units, so the game does not depend on a central server continually coordinating the players.
+    </p>
+
+</section>
 <section class="guide-section"><h2>5. Keep the match safe</h2><p>Make sure the chosen location is suitable for outdoor play and that participants understand the boundaries and rules before starting. Players should remain aware of their surroundings and never follow a game objective into a road, private property or another unsafe area.</p><p>GPS accuracy can vary with terrain, buildings and tree cover. Treat the displayed position as a guide rather than a substitute for good judgement on the ground.</p></section>
 <div class="guide-callout guide-warning"><strong>Remember</strong><p>CombatLR is a GPS-based outdoor game. The site needs adequate GPS coverage, and the game organiser remains responsible for choosing a safe play area and briefing participants.</p></div>
 <div class="guide-next"><span class="eyebrow">YOU'RE READY</span><h2>Go play.</h2><p>You've prepared the map, built the plan, loaded the units and started the match.</p><a class="button button-primary" href="../index.html">Back to CombatLR <span>↑</span></a></div>
