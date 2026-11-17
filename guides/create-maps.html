@@ -14,6 +14,25 @@
 
 <p class="guide-intro">Every CombatLR game starts with a map of the place you intend to play. 
     MapBuilder turns a suitable image into a GPS-calibrated site package that the mobile app and player units can use.</p>
+    <p><strong>CombatLR</strong> uses the concept of <strong>Game Packages</strong>. A game package consists of all the files required for a package:</p>
+    <p>Keep each game package in a folder named after the project. The map builder web app requires this.</p>
+    <li>
+        <span>Source Image:</span>
+        <span>The original image with known GPS points.</span>
+    </li>
+    <li>
+        <span>projectname.combatlr:</span>
+        <span>The map builder project file.</span>
+    </li>
+    <li>
+        <span map.bmp:</span>
+        <span>RGB565 map image exported to ESP32 and used by CombatLR mobile app.</span>
+    </li>
+    <li>
+        <span map.json:</span>
+        <span>Map geometry file. Exported to ESP32 and used by CombatLR mobile app..</span>
+    </li>
+</ul>
 
 <div class="guide-callout"><strong>Choose your MapBuilder</strong><p><a class="guide-link" href="../map-builder/">Launch Web MapBuilder</a> in your browser, or use the <a class="guide-link" href="https://github.com/tonygoacher/CombatLR/tree/main/CombatlrMapBuilder" target="_blank" rel="noopener">Windows MapBuilder</a>. Both applications open and save the same Version 3 <code>.combatlr</code> project format and produce compatible <code>map.bmp</code> and <code>map.json</code> files. You can move a project between the two applications without converting it.</p></div>
 
@@ -52,6 +71,7 @@
          
          <p>Pick four points that are easy to recognise both on the image and in the real world.
              Spread them around the area rather than clustering them together. You will enter the GPS coordinates for each point in MapBuilder.</p>
+             <p>The Windows and Web map builder interfaces are alomost identical, so only Windows is described in this guide.</p>
 </section>
 <section class="guide-section">
     <h2>2. The Windows MapBuilder interface</h2>
