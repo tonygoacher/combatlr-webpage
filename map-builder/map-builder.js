@@ -2,7 +2,7 @@
   "use strict";
   const OUT_W=1280, OUT_H=960, EARTH=6371008.8, POINTS=["A","B","C","D"];
   const $=id=>document.getElementById(id);
-  const state={image:null,imageName:"",width:0,height:0,points:[null,null,null,null],gps:[null,null,null,null],nextPoint:0,crop:{x:0,y:0,w:0,h:0},zoom:1,transform:null,metresPerPixel:0,drag:null,lastDragMoved:false};
+  const state={image:null,imageName:"",width:0,height:0,points:[null,null,null,null],gps:[null,null,null,null],nextPoint:0,crop:{x:0,y:0,w:0,h:0},zoom:1,transform:null,metresPerPixel:0,drag:null,pan:null,lastDragMoved:false};
   const canvas=$("map-canvas"),ctx=canvas.getContext("2d",{willReadFrequently:true});
   const stage=$("map-stage"),overlay=$("overlay"),cropBox=$("crop-box"),viewport=$("viewport");
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -30,9 +30,12 @@
   function mapMetadata(){const p=state.crop,w=p.w,h=p.h,tl=imageToGeo({x:p.x,y:p.y}),tr=imageToGeo({x:p.x+w,y:p.y}),bl=imageToGeo({x:p.x,y:p.y+h}),br=imageToGeo({x:p.x+w,y:p.y+h}),centre=imageToGeo({x:p.x+w/2,y:p.y+h/2});return{Version:2,Image:{Width:OUT_W,Height:OUT_H},MetresPerPixel:w*state.metresPerPixel/OUT_W,SourceCrop:{X:p.x,Y:p.y,Width:w,Height:h},Playfield:{Centre:{Latitude:centre.latitude,Longitude:centre.longitude},TopLeft:{Latitude:tl.latitude,Longitude:tl.longitude},TopRight:{Latitude:tr.latitude,Longitude:tr.longitude},BottomLeft:{Latitude:bl.latitude,Longitude:bl.longitude},BottomRight:{Latitude:br.latitude,Longitude:br.longitude}},Reference:{Points:state.points.map((p,i)=>({Name:POINTS[i],X:p.x,Y:p.y,Gps:{Latitude:state.gps[i].latitude,Longitude:state.gps[i].longitude}}))}};}
   function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);}
   function exportPackage(){if(!state.transform||!state.points.every(Boolean)||!state.gps.every(Boolean))return;try{const bmp=exportBmp(),json=new Blob([JSON.stringify(mapMetadata(),null,2)],{type:"application/json"});download(bmp,"map.bmp");setTimeout(()=>download(json,"map.json"),250);toast("Exported map.bmp and map.json.");}catch(e){console.error(e);toast("Export failed: "+e.message);}}
-  function pointerDown(e){if(!state.image)return;const r=cropBox.getBoundingClientRect(),resize=e.target===$("resize-handle")||(e.clientX>r.right-16&&e.clientY>r.bottom-16);state.drag={type:resize?"resize":"move",startX:e.clientX,startY:e.clientY,crop:{...state.crop},moved:false};cropBox.setPointerCapture(e.pointerId);e.preventDefault();e.stopPropagation();}
+  function pointerDown(e){if(!state.image||e.button!==0)return;const r=cropBox.getBoundingClientRect(),resize=e.target===$("resize-handle")||(e.clientX>r.right-16&&e.clientY>r.bottom-16);state.drag={type:resize?"resize":"move",startX:e.clientX,startY:e.clientY,crop:{...state.crop},moved:false};cropBox.setPointerCapture(e.pointerId);e.preventDefault();e.stopPropagation();}
   function pointerMove(e){if(!state.drag)return;const screenDx=e.clientX-state.drag.startX,screenDy=e.clientY-state.drag.startY;if(Math.hypot(screenDx,screenDy)>3)state.drag.moved=true;const dx=screenDx/state.zoom,dy=screenDy/state.zoom,c=state.drag.crop;if(state.drag.type==="move"){state.crop.x=c.x+dx;state.crop.y=c.y+dy;}else{let w=Math.max(320,c.w+Math.max(dx,dy*4/3));state.crop.w=w;state.crop.h=w*.75;}drawCrop();e.preventDefault();e.stopPropagation();}
   function pointerUp(e){if(!state.drag)return;state.lastDragMoved=state.drag.moved;state.drag=null;updateCalibration();if(e)e.stopPropagation();}
+  function panPointerDown(e){if(e.button!==1||!state.image)return;state.pan={pointerId:e.pointerId,x:e.clientX,y:e.clientY,scrollLeft:viewport.scrollLeft,scrollTop:viewport.scrollTop};viewport.setPointerCapture(e.pointerId);viewport.classList.add("panning");e.preventDefault();e.stopPropagation();}
+  function panPointerMove(e){if(!state.pan||e.pointerId!==state.pan.pointerId)return;viewport.scrollLeft=state.pan.scrollLeft-(e.clientX-state.pan.x);viewport.scrollTop=state.pan.scrollTop-(e.clientY-state.pan.y);e.preventDefault();}
+  function panPointerUp(e){if(!state.pan||e.pointerId!==state.pan.pointerId)return;state.pan=null;viewport.classList.remove("panning");e.preventDefault();}
   $("image-file").addEventListener("change",e=>loadImage(e.target.files[0]));
   $("drop-zone").addEventListener("click",()=>$("image-file").click());$("drop-zone").addEventListener("dragover",e=>{e.preventDefault();$("drop-zone").classList.add("drag");});$("drop-zone").addEventListener("dragleave",()=>$("drop-zone").classList.remove("drag"));$("drop-zone").addEventListener("drop",e=>{e.preventDefault();$("drop-zone").classList.remove("drag");loadImage(e.dataTransfer.files[0]);});
   canvas.addEventListener("click",e=>{if(!state.drag)placePoint(sourcePoint(e));});
@@ -41,6 +44,7 @@
   $("reset-points").addEventListener("click",()=>{state.points=[null,null,null,null];state.nextPoint=0;updatePointUI();updateCalibration();});
   $("export").addEventListener("click",exportPackage);$("export-side").addEventListener("click",exportPackage);
   $("zoom-in").addEventListener("click",()=>{state.zoom=clamp(state.zoom*1.2,.08,3);applyZoom();});$("zoom-out").addEventListener("click",()=>{state.zoom=clamp(state.zoom/1.2,.08,3);applyZoom();});$("fit-map").addEventListener("click",fitZoom);
+  viewport.addEventListener("pointerdown",panPointerDown);viewport.addEventListener("pointermove",panPointerMove);viewport.addEventListener("pointerup",panPointerUp);viewport.addEventListener("pointercancel",panPointerUp);
   $("viewport").addEventListener("mousemove",e=>{if(!state.image)return;const p=sourcePoint(e);$("cursor-status").textContent="IMAGE "+p.x.toFixed(0)+", "+p.y.toFixed(0)+" PX";});
   window.addEventListener("resize",()=>{if(state.image)fitZoom();});
 })();
