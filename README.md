@@ -10,6 +10,7 @@ The site presents CombatLR as a real-world Battle Royale laser tag system, highl
 - `js/main.js` — mobile navigation and small page enhancements
 - `assets/images/` — image assets and favicon
 - `guides/` — Getting Started guides for maps, game plans, file transfer and game management
+- `map-builder/` — experimental browser-based map calibration and site-package exporter
 - `downloads/` — future downloadable application and firmware releases
 - `documentation/` — future technical documentation
 
