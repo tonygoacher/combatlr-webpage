@@ -14,8 +14,11 @@
   <header class="topbar">
     <a class="brand" href="../index.html"><span class="brand-mark">C</span><span>COMBAT<span class="accent">LR</span><small>MAP BUILDER</small></span></a>
     <div class="top-actions">
+      <label class="button" for="project-folder">Open project folder</label>
+      <input id="project-folder" type="file" webkitdirectory directory multiple hidden>
       <label class="button primary" for="image-file">Open map image</label>
       <input id="image-file" type="file" accept="image/png,image/jpeg,image/bmp,image/webp" hidden>
+      <button id="save-project" class="button" disabled>Save project</button>
       <button id="reset-points" class="button" disabled>Reset calibration</button>
       <button id="export" class="button primary" disabled>Export site package</button>
     </div>
@@ -30,6 +33,7 @@
           <small>PNG, JPG, BMP or WebP</small>
         </div>
         <div id="image-info" class="info-line">No image loaded</div>
+        <div id="project-info" class="info-line">No project loaded</div>
       </section>
 
       <section class="panel">
