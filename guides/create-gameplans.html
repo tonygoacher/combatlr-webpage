@@ -9,16 +9,16 @@
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/images/combatlr-logo.png" alt="CombatLR"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="../index.html#game">The game</a><a href="../index.html#getting-started">Getting started</a><a href="../index.html#resources">Resources</a><a class="nav-cta" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">GitHub ↗</a></nav></div></header>
 <main id="main" class="guide-main"><div class="container guide-container">
 <a class="guide-back" href="../index.html#getting-started">← Getting started</a><p class="eyebrow">GETTING STARTED / 02</p><h1>Create <span>gameplans.</span></h1>
-<p class="guide-intro">A game plan defines the match:  where and when the safe zones move, and what resources can be found around the battlefield.</p>
+<p class="guide-intro">A game plan defines the match: where and when the safe zones move, and what resources can be found around the battlefield.</p>
 <div class="guide-callout"><strong>You'll need</strong><p>An Android device, a MapBuilder site package and CombatLR Mobile. The app currently supports Android only. A tablet is recommended because the map editor and game-plan controls are easier to use on a larger screen.</p></div>
 <section class="guide-section"><h2>1. Prepare the CombatLR folders</h2><p>Connect your Android device to a Windows PC using a USB cable. Unlock the device and, if prompted, choose <strong>File transfer</strong> as the USB connection mode. Windows should then show the device in <strong>File Explorer</strong> under <strong>This PC</strong>.</p><p>In File Explorer, open the device's internal storage and then its <strong>Documents</strong> folder. Create a folder named <code>CombatLR</code>
-     directly inside Documents if not already present.</p>
+     directly inside Documents if it does not already exist.</p>
      <p>Inside <code>CombatLR</code>, create a separate folder for your game plan and give it a sensible name, e.g. <code>AlexandraPark</code>.
      Create a different named folder for each game plan you want to keep.</p><pre class="guide-code">Documents/
 └── CombatLR/
     └── AlexandraPark/</pre><p>Copy the MapBuilder site package files, map.bmp and map.json, into the <code>AlexandraPark</code> folder using Windows File Explorer. 
         The mobile app presents a folder list to select the plan you wish to use.</p></section>
-<section class="guide-section"><h2>1. Start with a project and map</h2><p>Open CombatLR Mobile and select the game project you want to work on.</p>
+<section class="guide-section"><h2>2. Start with a project and map</h2><p>Open CombatLR Mobile and select the game project you want to work on.</p>
     <figure class="guide-image">
     <img src="../assets/images/gettingstarted/mainmenu.webp"
          alt="The main menu">
@@ -31,13 +31,13 @@
 </figure>
      Choose the site map package for the battlefield. Keep each game project's files together so its map and game plan stay associated.</p>
      <p>If a folder does not show in the list, check it contains map.bmp and map.json files.</p>
-     <p>To rename a folder, select it then press <span class="ui-button">RENAME PROJECT</span>. Enter a new name. The game plan will be reloaded from the new folder</p>
+     <p>To rename a folder, select it then press <span class="ui-button">RENAME PROJECT</span>. Enter a new name. The game plan will be reloaded from the new folder.</p>
      <p>Select <span class="ui-button">REFRESH PROJECTS</span> to refresh the list of available project folders.</p>
      <p>With a project loaded, select <span class="ui-button">CONTINUE</span> to edit the plan.</p>
      <p>Before adding game objects, check that the map is the correct location and that its scale and orientation look sensible.</p></section>
 
-<section class="guide-section"><h2>2. Plan control page</h2>
-    <p> On the main game plan page. Select <span class="ui-button">GAME PLAN EDITOR</span></p>
+<section class="guide-section"><h2>3. Plan control page</h2>
+    <p> On the main game plan page, select <span class="ui-button">GAME PLAN EDITOR</span></p>
     <figure class="guide-image">
         <img src="../assets/images/gettingstarted/maingameplanpage.webp"
             alt="Tap the gameplan folder to use.">
@@ -48,7 +48,7 @@
 
 
 
-<section class="guide-section"><h2>3. The Game Plan Screen</h2>
+<section class="guide-section"><h2>4. The Game Plan screen</h2>
     
     <figure class="guide-image">
         <img src="../assets/images/mapbuilder/mapbuilder.jpg"
@@ -82,7 +82,7 @@
 <ul class="guide-file-list">
     <li>
         <span class="ui-pane-text">Zone</span><span class="ui-pane-text">Pickups</span>
-        <span>Indicates the current object placement/edit mode. Click here to select the mode.</span>
+        <span>Indicates the current object placement/edit mode. Tap here to select the mode.</span>
     </li>
     <li>
         <span class="ui-button">Add</span>
@@ -104,7 +104,7 @@
 
 </section>    
 
-<section class="guide-section"><h2>4. Set the home position</h2>
+<section class="guide-section"><h2>5. Set the home position</h2>
     
     <figure class="guide-image">
         <img src="../assets/images/gettingstarted/plan-edit-screen.jpg"
@@ -113,29 +113,29 @@
     </figure>
 
     <p>All coordinates in the game plan are stored as meters from the home position. The home position is shown as the red house icon.</p>
-    <p>On a new gameplan, the home position will be automatically placed in the centre of the map. The home position is a great 
-        location to marshall players at the start and end of the game, so choose a good position. Do this before placing any zones or pickups!</p>
+    <p>On a new game plan, the home position will be automatically placed in the centre of the map. The home position is a great 
+        location to marshal players at the start and end of the game, so choose a good position. Do this before placing any zones or pickups!</p>
     
     <p>To change the home position, select <span class="ui-button">Set Home</span> then tap the position on the map.</p>
 
 </section>
 
-<section class="guide-section"><h2>5. Set the start delay</h2>
+<section class="guide-section"><h2>6. Set the start delay</h2>
     
-    <p>The start delay is the player dispersal time. When the game is started, the players have this time to position themselves on the site.  The placement of Zone 1 and it's icons are displayed
+    <p>The start delay is the player dispersal time. When the game is started, the players have this time to position themselves on the site.  The placement of Zone 1 and its icons are displayed
         on the player map. No pickups are processed. No shots can be fired.
     </p>
     
-    <p>To change the home position, select <span class="ui-button">Set Home</span> then tap the position on the map.</p>
+    <p>To set the game start delay, tap the <strong>Game Start Delay</strong> value, and enter a new one.</p>
 
 </section>
 
 
-<section class="guide-section"><h2>6. Create the zones</h2>
+<section class="guide-section"><h2>7. Create the zones</h2>
     
     <figure class="guide-image">
         <img src="../assets/images/gettingstarted/plan-edit-screen.jpg"
-            alt="The Game plan editor screen.">
+            alt="The Game Plan editor screen.">
 
     </figure>
 
@@ -157,23 +157,23 @@
 
     <figure class="guide-image">
         <img src="../assets/images/gettingstarted/empty-zone.jpg"
-            alt="Current zone is dispayed in green.">
+            alt="Current zone is displayed in green.">
 
     </figure>
 
-    <p>Select a zone then press <span class="ui-button">Edit</span>to change a zones radius, start time and lifespan. It's better to just set the radius here, edit the start and lifespan fields in <a class="guide-link" href="#zone-timelines">
+    <p>Select a zone then press <span class="ui-button">Edit</span> to change a zone's radius, start time and lifespan. It's better to just set the radius here, edit the start and lifespan fields in <a class="guide-link" href="#zone-timelines">
     Zone Timelines</a></p>   
     
-    <p><span class="ui-button">Delete</span> removes the currently selected zone AND ALL ITS PICKUPS. You'll be asked to confirm before proceeding. Note that deleting a zone cane leave
+    <p><span class="ui-button">Delete</span> removes the currently selected zone AND ALL ITS PICKUPS. You'll be asked to confirm before proceeding. Note that deleting a zone can leave
     holes in the timeline. <a class="guide-link" href="#zone-timelines">
-    Zone Timelines section below.</a></p>
+    Check this in Zone Timelines section below.</a></p>
 
-    <p>Use the forwards and backwards arrows to change the currently selected zone.</p>
+    <p>Use the forward and backward arrows to change the currently selected zone.</p>
 
 
 
-    <section class="guide-section"><h2>7. Place pickups</h2>
-        <p>Make sure a zone is selected and tap on the <span class="ui-pane-text">Zone</span> text if it doesn't say <span class="ui-pane-text">Pickups</span> )</p>
+    <section class="guide-section"><h2>8. Place pickups</h2>
+        <p>Make sure a zone is selected and tap on the <span class="ui-pane-text">Zone</span> text if it doesn't say <span class="ui-pane-text">Pickups</span></p>
 
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/pickup-page.jpg"
@@ -181,10 +181,10 @@
                 <figcaption>The pickup placement screen.</figcaption>
         </figure>
 
-        <p>Each zone holds its own pickups. A zones pickup only become visible to the player when that zone is acitvated. Pickups on a transitioning zone are displayed during the transition.</p>
-        <p>Add, move edit and delete pickups using the same controls as zones. The current pickup is highlighted in green</p>
+        <p>Each zone holds its own pickups. A zone's pickup only become visible to the player when that zone is activated. Pickups on a transitioning zone are displayed during the transition.</p>
+        <p>Add, move, edit and delete pickups using the same controls as zones. The current pickup is highlighted in green</p>
 
-        <p> CombatLR supports these pickup categories:</p>
+        <p>CombatLR supports these pickup categories:</p>
             <ul class="guide-file-list">
                 <li>
                     <img class="pickup-icon" src="../assets/images/gettingstarted/health.webp" alt="">
@@ -204,7 +204,7 @@
                 <li>
                     <img class="pickup-icon" src="../assets/images/gettingstarted/auto.webp" alt="">
                     <code>Auto</code>
-                    <span>The player unit allocates a random subset of these pickups at the start of a game.See <a class="guide-link" href="#pickup-configuration">Pickup Configuration</a></span>
+                    <span>The player unit allocates a random subset of these pickups at the start of a game. See <a class="guide-link" href="#pickup-configuration">Pickup Configuration</a></span>
                 </li>
             </ul>
         <p>Think about how players will move through the site. Spread useful pickups around the play area and avoid placing them somewhere that cannot be reached safely.</p>
@@ -215,8 +215,8 @@
     </section>
 
     <section class="guide-section" id="pickup-configuration">
-        <h2>8. Pickup Configuration</h2>
-        <p>In Pickups mode, select Edit to change the current pickup's configuration.</p>
+        <h2>9. Pickup Configuration</h2>
+        <p>In Pickups mode, select Edit to change the current pickup configuration.</p>
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/pickup-config.webp"
                 alt="Pickup Configuration.">
@@ -230,12 +230,12 @@
                 </li>
                 <li>
                     <code>Spawn Time</code>
-                    <span>If this is zero, the pickup appears as soon as it's parent zone activates. If >0, the pickup becomes visible <code>Spawn Time</code> seconds
+                    <span>If this is zero, the pickup appears as soon as its parent zone activates. If >0, the pickup becomes visible <code>Spawn Time</code> seconds
                     after the parent zone becomes active, and it appears to all players.</span>
                 </li>
                 <li>
                     <code>Lifespan</code>
-                    <span>If the pickup has a none zero spawn time, the pickup remains active for this time after spawn time. 0 = permanent until zone is deactivated.</span>
+                    <span>If the pickup has a non-zero spawn time, the pickup remains active for this time after spawn time. 0 = permanent until zone is deactivated.</span>
                 </li>
 
             </ul>
@@ -245,21 +245,21 @@
     </section>   
     
     <section class="guide-section" id="zone-timelines">
-        <h2 id=zone-timelines>5. Zone Timelines</h2>
+        <h2 id=zone-timelines>10. Zone Timelines</h2>
         <p>The zone timeline is the most important part of a gameplan. It defines when zones appear, when they start to move and how long they last.</p>
-        <p>In the <span class="ui-pane-text">GAME OBJECT</span>pane,  select <span class="ui-button">Timeline</span> in <span class="ui-pane-text">Zone</span> mode to view the timeline. It is displayed as a Gantt chart style diagram, with zones displayed in blue and transitions in yellow</p>     
+        <p>In the <span class="ui-pane-text">GAME OBJECT</span> pane, select <span class="ui-button">Timeline</span> in <span class="ui-pane-text">Zone</span> mode to view the timeline. It is displayed as a Gantt-chart-style diagram, with zones displayed in blue and transitions in yellow.</p>     
         <p>Time proceeds from left to right. Use the <span class="ui-button">+/-</span> buttons to zoom in/out. Side swipe to pan across the timeline.</p>
 
-        <p>A well formed timeline should look like this:</p>
+        <p>A well-formed timeline should look like this:</p>
 
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/gantt.webp"
             alt="Timeline Screen.">
             <figcaption>Timeline.</figcaption>
         </figure>
-        <p>The zone active times (Blue bar + right hand side yellow bar) and the transition times should be reasonable for your site.</p>
+        <p>The zone active times (Blue bar + right-hand side yellow bar) and the transition times should be reasonable for your site.</p>
 
-        <p>Select a zone to edit the zone configuration screen</p>
+        <p>Select a zone to edit the zone configuration screen.</p>
 
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/zone-config.webp"
@@ -267,13 +267,13 @@
             <figcaption>Zone configuration screen.</figcaption>
         </figure>
 
-        <p>The important part of the timeline is the transition time. Lets observe a timeline where 3 zones have been added from the game plan screen, but have no time details set. By default,
+        <p>The important part of the timeline is the transition time. Let's observe a timeline where three zones have been added from the game plan screen, but have no time details set. By default,
             the game plan editor places them consecutively on the timeline
         </p>
 
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/default-timeline.webp"
-            alt="Default Timelinen.">
+            alt="Default timeline.">
             <figcaption>Default timeline with no transitions.</figcaption>
         </figure>
 
@@ -308,13 +308,13 @@
         </tbody>
         </table>
 
-        <p>A zone begins its transition time when the next zone start time occurs within its lifespan. Current zone is always active for its entire lifespan</p>
+        <p>A zone begins its transition time when the next zone start time occurs within its lifespan. The current zone is always active for its entire lifespan</p>
         <p>The time at which a zone transition starts and how long the transition lasts are defined by the current zone lifespan and the NEXT zone start time</p>
-        <p>Eg. We want zone 1 to start its transition at 4 minutes, the transition to last for 2 minutes. </p>
-        <p>So, 6 mins in total (4 + 2), so lifespan = 6mins</p>
-        <p>The time the transition takes, the transition time, is set by having the NEXT zones start time occur within the lifespan of zone 1. The next zone will not activate until the previous zone has completed its transition time.</p>
+        <p>For example, we want zone 1 to start its transition at 4 minutes, the transition to last for 2 minutes. </p>
+        <p>So, 6 mins in total (4 + 2), so lifespan = 6 mins</p>
+        <p>The time the transition takes, the transition time, is set by having the NEXT zone's start time occur within the lifespan of zone 1. The next zone will not activate until the previous zone has completed its transition time.</p>
         <p>The time to transition from Z1 to Z2 is calculated as (current zone start + current zone lifespan) - next zone start time</p>
-        <p>So with a transition time of 2 mins, The next zone start time is (current zone start time + current zone lifespan) - transition time </p>
+        <p>So with a transition time of 2 mins, the next zone start time is (current zone start time + current zone lifespan) - transition time </p>
         <p>Zone 2 start time is (0 + 6) - 2 = 4</p>
         <p>So let's set zone 1's lifetime to 6 mins</p>
 
@@ -340,7 +340,7 @@
             <figcaption>Set zone 2 start time.</figcaption>
         </figure>
     
-        <p>And the chart now shows Z1 with a lifespan of 6 mins, and a transition time of 2mins</p> 
+        <p>And the chart now shows Z1 with a lifespan of 6 mins, and a transition time of 2 mins.</p> 
 
         <figure class="guide-image">
             <img src="../assets/images/gettingstarted/proper-timeline.webp"
