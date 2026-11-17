@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b100e">
+  <title>CombatLR Map Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="map-builder.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-mark">C</span><span>COMBAT<span class="accent">LR</span><small>MAP BUILDER</small></span></a>
+    <div class="top-actions">
+      <label class="button primary" for="image-file">Open map image</label>
+      <input id="image-file" type="file" accept="image/png,image/jpeg,image/bmp,image/webp" hidden>
+      <button id="reset-points" class="button" disabled>Reset calibration</button>
+      <button id="export" class="button primary" disabled>Export site package</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="sidebar">
+      <section class="panel">
+        <div class="panel-heading"><span class="step">01</span><div><h2>Source map</h2><p>Load an image of your play area</p></div></div>
+        <div id="drop-zone" class="drop-zone">
+          <div class="drop-icon">＋</div><strong>Drop map image here</strong><span>or use Open map image above</span>
+          <small>PNG, JPG, BMP or WebP</small>
+        </div>
+        <div id="image-info" class="info-line">No image loaded</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><span class="step">02</span><div><h2>GPS calibration</h2><p>Mark four known locations on the image</p></div></div>
+        <div class="instructions">Select A, B, C and D in turn by clicking their positions on the map. Enter the corresponding GPS coordinates for each point.</div>
+        <div id="point-list" class="point-list">
+          <div class="point-row active" data-point="0"><span class="point-marker">A</span><div class="point-fields"><strong>Reference A</strong><div><input id="lat-0" inputmode="decimal" placeholder="Latitude"><input id="lon-0" inputmode="decimal" placeholder="Longitude"></div><small id="xy-0">Not placed</small></div><span class="point-state">NEXT</span></div>
+          <div class="point-row" data-point="1"><span class="point-marker">B</span><div class="point-fields"><strong>Reference B</strong><div><input id="lat-1" inputmode="decimal" placeholder="Latitude"><input id="lon-1" inputmode="decimal" placeholder="Longitude"></div><small id="xy-1">Not placed</small></div><span class="point-state">WAIT</span></div>
+          <div class="point-row" data-point="2"><span class="point-marker">C</span><div class="point-fields"><strong>Reference C</strong><div><input id="lat-2" inputmode="decimal" placeholder="Latitude"><input id="lon-2" inputmode="decimal" placeholder="Longitude"></div><small id="xy-2">Not placed</small></div><span class="point-state">WAIT</span></div>
+          <div class="point-row" data-point="3"><span class="point-marker">D</span><div class="point-fields"><strong>Reference D</strong><div><input id="lat-3" inputmode="decimal" placeholder="Latitude"><input id="lon-3" inputmode="decimal" placeholder="Longitude"></div><small id="xy-3">Not placed</small></div><span class="point-state">WAIT</span></div>
+        </div>
+        <div id="calibration-status" class="status-note">Load an image to begin calibration.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><span class="step">03</span><div><h2>Playfield area</h2><p>Choose the area to export</p></div></div>
+        <p class="instructions">Move the green rectangle to position the playfield. Drag its lower-right handle to resize. The selection is locked to the required 4:3 aspect ratio.</p>
+        <div class="metric-grid">
+          <div class="metric"><span>MAP SCALE</span><strong id="scale-value">—</strong></div>
+          <div class="metric"><span>PLAYFIELD SIZE</span><strong id="area-value">—</strong></div>
+        </div>
+        <div class="zoom-controls"><span>Canvas zoom</span><button id="zoom-out" aria-label="Zoom out">−</button><strong id="zoom-value">100%</strong><button id="zoom-in" aria-label="Zoom in">＋</button><button id="fit-map">Fit</button></div>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="panel-heading"><span class="step">04</span><div><h2>Export</h2><p>Firmware-compatible site package</p></div></div>
+        <div class="output-file"><span class="file-icon">BMP</span><div><strong>map.bmp</strong><small>1280 × 960 · RGB565</small></div><span class="file-check">✓</span></div>
+        <div class="output-file"><span class="file-icon json">JSON</span><div><strong>map.json</strong><small>Version 2 · calibration metadata</small></div><span class="file-check">✓</span></div>
+        <button id="export-side" class="button primary full" disabled>Export site package</button>
+        <p class="privacy-note">All processing happens locally in your browser. Your map image is never uploaded.</p>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-toolbar"><div><span class="live-dot"></span><strong id="workspace-title">MAP WORKSPACE</strong><span id="workspace-subtitle">Waiting for source image</span></div><span class="hint">CLICK MAP TO PLACE REFERENCE POINTS</span></div>
+      <div id="viewport" class="viewport">
+        <div id="empty-state" class="empty-state"><div class="empty-map">⌖</div><h1>Build your CombatLR map</h1><p>Load a map image to start. Mark four known GPS locations, position the playfield and export the site package.</p><label class="button primary" for="image-file">Choose map image</label></div>
+        <div id="map-stage" class="map-stage" hidden>
+          <canvas id="map-canvas"></canvas>
+          <div id="overlay" class="overlay">
+            <div id="crop-box" class="crop-box"><span class="crop-label">COMBATLR PLAYFIELD · 4:3</span><span id="resize-handle" class="resize-handle"></span></div>
+          </div>
+        </div>
+      </div>
+      <footer class="workspace-footer"><span id="cursor-status">No image loaded</span><span id="transform-status">TRANSFORM: NOT CALIBRATED</span></footer>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="map-builder.js"></script>
+</body>
+</html>
