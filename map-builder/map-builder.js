@@ -2,7 +2,7 @@
   "use strict";
   const OUT_W=1280, OUT_H=960, EARTH=6371008.8, POINTS=["A","B","C","D"];
   const $=id=>document.getElementById(id);
-  const state={image:null,imageName:"",width:0,height:0,points:[null,null,null,null],gps:[null,null,null,null],nextPoint:0,crop:{x:0,y:0,w:0,h:0},zoom:1,transform:null,metresPerPixel:0,drag:null};
+  const state={image:null,imageName:"",width:0,height:0,points:[null,null,null,null],gps:[null,null,null,null],nextPoint:0,crop:{x:0,y:0,w:0,h:0},zoom:1,transform:null,metresPerPixel:0,drag:null,lastDragMoved:false};
   const canvas=$("map-canvas"),ctx=canvas.getContext("2d",{willReadFrequently:true});
   const stage=$("map-stage"),overlay=$("overlay"),cropBox=$("crop-box"),viewport=$("viewport");
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -32,12 +32,12 @@
   function exportPackage(){if(!state.transform||!state.points.every(Boolean)||!state.gps.every(Boolean))return;try{const bmp=exportBmp(),json=new Blob([JSON.stringify(mapMetadata(),null,2)],{type:"application/json"});download(bmp,"map.bmp");setTimeout(()=>download(json,"map.json"),250);toast("Exported map.bmp and map.json.");}catch(e){console.error(e);toast("Export failed: "+e.message);}}
   function pointerDown(e){if(!state.image)return;const r=cropBox.getBoundingClientRect(),handle=$("resize-handle").getBoundingClientRect(),resize=e.target===$("resize-handle")|| (e.clientX>r.right-16&&e.clientY>r.bottom-16);state.drag={type:resize?"resize":"move",startX:e.clientX,startY:e.clientY,crop:{...state.crop}};cropBox.setPointerCapture(e.pointerId);e.preventDefault();}
   function pointerMove(e){if(!state.drag)return;const dx=(e.clientX-state.drag.startX)/state.zoom,dy=(e.clientY-state.drag.startY)/state.zoom,c=state.drag.crop;if(state.drag.type==="move"){state.crop.x=c.x+dx;state.crop.y=c.y+dy;}else{let w=Math.max(320,c.w+Math.max(dx,dy*4/3));state.crop.w=w;state.crop.h=w*.75;}drawCrop();}
-  function pointerUp(){if(!state.drag)return;state.drag=null;updateCalibration();}
+  function pointerUp(){if(!state.drag)return;state.lastDragMoved=!!state.drag.moved;state.drag=null;updateCalibration();}
   $("image-file").addEventListener("change",e=>loadImage(e.target.files[0]));
   $("drop-zone").addEventListener("click",()=>$("image-file").click());$("drop-zone").addEventListener("dragover",e=>{e.preventDefault();$("drop-zone").classList.add("drag");});$("drop-zone").addEventListener("dragleave",()=>$("drop-zone").classList.remove("drag"));$("drop-zone").addEventListener("drop",e=>{e.preventDefault();$("drop-zone").classList.remove("drag");loadImage(e.dataTransfer.files[0]);});
   canvas.addEventListener("click",e=>{if(!state.drag)placePoint(sourcePoint(e));});
   POINTS.forEach((_,i)=>{["lat-","lon-"].forEach(prefix=>$(prefix+i).addEventListener("input",updateCalibration));});
-  cropBox.addEventListener("pointerdown",pointerDown);cropBox.addEventListener("pointermove",pointerMove);cropBox.addEventListener("pointerup",pointerUp);cropBox.addEventListener("pointercancel",pointerUp);
+  cropBox.addEventListener("click",e=>{if(state.lastDragMoved){state.lastDragMoved=false;return;}if(e.target===$("resize-handle"))return;placePoint(sourcePoint(e));});cropBox.addEventListener("pointerdown",pointerDown);cropBox.addEventListener("pointermove",pointerMove);cropBox.addEventListener("pointerup",pointerUp);cropBox.addEventListener("pointercancel",pointerUp);
   $("reset-points").addEventListener("click",()=>{state.points=[null,null,null,null];state.nextPoint=0;updatePointUI();updateCalibration();});
   $("export").addEventListener("click",exportPackage);$("export-side").addEventListener("click",exportPackage);
   $("zoom-in").addEventListener("click",()=>{state.zoom=clamp(state.zoom*1.2,.08,3);applyZoom();});$("zoom-out").addEventListener("click",()=>{state.zoom=clamp(state.zoom/1.2,.08,3);applyZoom();});$("fit-map").addEventListener("click",fitZoom);
