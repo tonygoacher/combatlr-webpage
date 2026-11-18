@@ -18,15 +18,21 @@
 <p class="eyebrow"><span class="status-dot"></span> AN OPEN-SOURCE LASER TAG PROJECT</p>
 <h1>Battle Royale.<br><span>Not just laser tag.</span></h1>
 <p class="hero-subhead">No arena. No fixed infrastructure.<br><strong>Just pick your battlefield.</strong></p>
-<p class="hero-lead">CombatLR brings Battle Royale gameplay to the real world. GPS-driven safe zones, scattered pickups and multiple weapons turn suitable outdoor locations into evolving game worlds — without installing equipment around the venue.</p>
+<p class="hero-lead">CombatLR brings Battle Royale gameplay to the real world. GPS time is used to sychronise game zones and transitons across all players. 
+    Players see zones move to a new position on their player units at the same time.</p>
+    <p class="hero-lead">GPS positioning makes sure they stay in the safe zone, and allows them to pick up virtual weapons and ammo bonuses shown on their unit map.</p>
+    <p class="hero-lead">GPS-driven safe zones, scattered pickups and 
+    multiple weapons turn suitable outdoor locations into evolving game worlds — without installing equipment around the venue.Everything is driven by GPS.</p>
 <div class="hero-actions"><a class="button button-primary" href="#game">Discover the game <span>→</span></a><a class="button button-quiet" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">Explore the open project <span>↗</span></a></div>
 <div class="hero-foot"><span>DYNAMIC SAFE ZONES</span><i></i><span>GPS SYNCHRONISED</span><i></i><span>NO VENUE INFRASTRUCTURE</span></div>
 </div><img class="hero-logo" src="assets/images/combatlr-logo.png" alt="CombatLR — Combat Laser Royale"></section>
 
 <section class="intro section" id="game"><div class="container intro-layout"><div><p class="eyebrow">01 / THE GAME</p><h2>A changing<br><span>battlefield.</span></h2></div>
 <div class="intro-copy"><p class="large-copy">CombatLR takes the ideas that make Battle Royale games compelling and brings them outside: a play area that changes over time, resources worth searching for, and players who must decide when to fight and when to move.</p>
-<p>Game designers create a GPS-calibrated map, define the zones and their timings, and scatter virtual pickups around the playfield. As the match progresses, zones transition and the safe area changes. Players must keep moving, find supplies and adapt their strategy.</p>
-<p>It is designed for suitable outdoor locations with GPS coverage. There is no need to install base stations, sensors, site Wi-Fi or a central game server around the venue.</p></div></div>
+<p class="large-copy">Game designers create a GPS-calibrated game plan, define the zones and their timings, and scatter virtual pickups around the playfield.</p> 
+<p class="large-copy">Game plans are uploaded to the player units once and GPS time synchronises game progress across all players.</p>
+<p class="large-copy"As the match progresses, zones transition and the safe area changes. Players must keep moving, find supplies and adapt their strategy.</p>
+<p class="large-copy">It is designed for suitable outdoor locations with GPS coverage. There is no need to install base stations, sensors, site Wi-Fi or a central game server around the venue.</p></div></div>
 <div class="container feature-grid">
 <article class="feature-card"><span class="feature-index">01</span><div class="feature-icon">◎</div><h3>The zone keeps moving</h3><p>Timed zones and transitions reshape the playable area and keep players on the move.</p></article>
 <article class="feature-card"><span class="feature-index">02</span><div class="feature-icon">⌖</div><h3>Loot the landscape</h3><p>Health, ammunition and weapon pickups are placed on the map and discovered using GPS.</p></article>
@@ -54,13 +60,49 @@
 
 
 <section class="getting-started section" id="getting-started"><div class="container">
-<div class="section-heading"><div><p class="eyebrow">04 / GETTING STARTED</p><h2>From blank map<br><span>to Battle Royale.</span></h2></div><p>New to CombatLR? Follow the practical guides to prepare a battlefield, build a match, load your player units and run the game.</p></div>
+<div class="section-heading"><div><p class="eyebrow">04 / GETTING STARTED</p><h2>From blank map<br><span>to Battle Royale.</span></h2></div><p>New to CombatLR? Five steps to a game. Follow the practical guides to get player units on a network, create battlefield, build a match, load your player units and run the game.</p></div>
 <div class="guide-card-grid">
-<a class="guide-card" href="guides/create-maps.html"><span class="guide-card-number">01</span><span class="guide-card-icon">⌖</span><span class="guide-card-kicker">MAPBUILDER / WINDOWS</span><h3>Create maps</h3><p>Calibrate a map image with GPS reference points and export a site package.</p><span class="guide-card-link">Read the guide →</span></a>
-<a class="guide-card" href="guides/create-gameplans.html"><span class="guide-card-number">02</span><span class="guide-card-icon">◈</span><span class="guide-card-kicker">COMBATLR MOBILE</span><h3>Create gameplans</h3><p>Set up players, teams, safe zones, pickups, weapons and match timings.</p><span class="guide-card-link">Read the guide →</span></a>
-<a class="guide-card" href="guides/esp32-network-credentials.html"><span class="guide-card-number">03</span><span class="guide-card-icon">⌁</span><span class="guide-card-kicker">ESP32 / NETWORK SETUP</span><h3>ESP32 Network Credentials</h3><p>Connect to the player unit's provisioning access point and configure Wi-Fi and FTP logins.</p><span class="guide-card-link">Read the guide →</span></a>
-<a class="guide-card" href="guides/transfer-files.html"><span class="guide-card-number">04</span><span class="guide-card-icon">⇧</span><span class="guide-card-kicker">DEVICE SETUP</span><h3>Transfer files</h3><p>Discover player units and transfer the map and game plan ready for play.</p><span class="guide-card-link">Read the guide →</span></a>
-<a class="guide-card" href="guides/manage-games.html"><span class="guide-card-number">05</span><span class="guide-card-icon">▶</span><span class="guide-card-kicker">GAME CONTROL</span><h3>Manage games</h3><p>Check player readiness, start the match and monitor zone progress.</p><span class="guide-card-link">Read the guide →</span></a>
+
+    <a class="guide-card" href="guides/esp32-network-credentials.html">
+    <span class="guide-card-number">Step 1</span><span class="guide-card-icon">⌁</span>
+    <span class="guide-card-kicker">ESP32 / NETWORK SETUP</span><h3>ESP32 Network Credentials</h3>
+    <p>Connect to the player unit's provisioning access point and configure Wi-Fi and FTP logins.</p><span class="guide-card-link">Read the guide →</span>
+</a>
+
+<a class="guide-card" href="guides/create-maps.html">
+    <span class="guide-card-number">Step 2</span>
+    <span class="guide-card-icon">⌖</span>
+    <span class="guide-card-kicker">MAPBUILDER / WINDOWS</span>
+    <h3>Create maps</h3>
+        <p>Calibrate a map image with GPS reference points and export a site package.</p>
+        <span class="guide-card-link">Read the guide →</span>
+</a>
+
+<a class="guide-card" href="guides/create-gameplans.html">
+    <span class="guide-card-number">Step 3</span><span class="guide-card-icon">◈</span>
+    <span class="guide-card-kicker">COMBATLR MOBILE</span
+    ><h3>Create gameplans</h3>
+    <p>Set up players, teams, safe zones, pickups, weapons and match timings.</p><span class="guide-card-link">Read the guide →</span>
+</a>
+
+
+
+
+<a class="guide-card" href="guides/transfer-files.html">
+    <span class="guide-card-number">Step 4</span><span class="guide-card-icon">⇧</span>
+    <span class="guide-card-kicker">DEVICE SETUP</span>
+    <h3>Transfer files</h3><p>Discover player units and transfer the map and game plan ready for play.</p>
+    <span class="guide-card-link">Read the guide →</span>
+</a>
+
+<a class="guide-card" href="guides/manage-games.html">
+    <span class="guide-card-number">Step 5</span>
+    <span class="guide-card-icon">▶</span>
+    <span class="guide-card-kicker">GAME CONTROL</span>
+    <h3>Manage games</h3><p>Check player readiness, start the match and monitor zone progress.</p>
+    <span class="guide-card-link">Read the guide →</span>
+</a>
+
 </div></div></section>
 
 <section class="mobile-screenshot-section section" id="game-planning"><div class="container mobile-screenshot"><div class="mobile-screenshot-copy"><p class="eyebrow">GAME PLAN EDITOR</p><h2>Design the match.</h2><p>Place pickups and define the play area directly on the map. Decide where players can find supplies and how the changing zones shape the match.</p></div><figure><img src="assets/images/pickups.webp" alt="CombatLR Mobile pickup editor showing pickup locations marked across the game map, with zone boundaries and game object controls"><figcaption>Pickup placement and game-object editing in CombatLR Mobile</figcaption></figure></div></section>
