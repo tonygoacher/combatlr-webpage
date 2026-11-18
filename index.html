@@ -22,7 +22,8 @@
     Players see zones move to a new position on their player units at the same time.</p>
     <p class="hero-lead">GPS positioning makes sure they stay in the safe zone, and allows them to pick up virtual weapons and ammo bonuses shown on their unit map.</p>
     <p class="hero-lead">GPS-driven safe zones, scattered pickups and 
-    multiple weapons turn suitable outdoor locations into evolving game worlds — without installing equipment around the venue.Everything is driven by GPS.</p>
+    multiple weapons turn suitable outdoor locations into evolving game worlds — without installing equipment around the venue. Everything is driven by GPS.</p>
+    
 <div class="hero-actions"><a class="button button-primary" href="#game">Discover the game <span>→</span></a><a class="button button-quiet" href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener">Explore the open project <span>↗</span></a></div>
 <div class="hero-foot"><span>DYNAMIC SAFE ZONES</span><i></i><span>GPS SYNCHRONISED</span><i></i><span>NO VENUE INFRASTRUCTURE</span></div>
 </div><img class="hero-logo" src="assets/images/combatlr-logo.png" alt="CombatLR — Combat Laser Royale"></section>
@@ -53,9 +54,53 @@
 
 <section class="tools section" id="software"><div class="container"><div class="section-heading"><div><p class="eyebrow">03 / THE SOFTWARE</p><h2>Tools to build<br><span>your battlefield.</span></h2></div><p>Companion tools take you from map preparation to game setup and play.</p></div>
 <div class="tool-grid">
-<article class="tool-card"><div class="tool-art topo-art" aria-hidden="true"><span class="crosshair">+</span><span class="map-pin">⌖</span></div><div class="tool-card-body"><p class="eyebrow">WEB / WINDOWS</p><h3>MapBuilder</h3><p>Calibrate a map image against real-world GPS reference points. Use the browser version or the Windows application; both share the same project format and export compatible site packages.</p><a href="map-builder/index.html" class="text-link">Launch Web MapBuilder ↗</a><a href="https://github.com/tonygoacher/CombatLR/tree/main/CombatlrMapBuilder" target="_blank" rel="noopener" class="text-link">Windows app &amp; source ↗</a></div></article>
-<article class="tool-card"><div class="tool-art gps-art" aria-hidden="true"><div class="radar"><i></i><b></b><span></span></div></div><div class="tool-card-body"><p class="eyebrow">WINDOWS</p><h3>GPS Simulator</h3><p>Feed simulated NMEA GPS data to a game unit during development, testing and setup.</p><a href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener" class="text-link">Explore source ↗</a></div></article>
-<article class="tool-card"><div class="tool-art mobile-art" aria-hidden="true"><div class="phone-frame"><span></span><i></i><b></b></div></div><div class="tool-card-body"><p class="eyebrow">.NET MAUI / ANDROID</p><h3>CombatLR Mobile</h3><p>Prepare game plans, manage players and teams, discover units and control a game.</p><a href="https://github.com/tonygoacher/CombatLR/tree/main/CombatLR.mobile" target="_blank" rel="noopener" class="text-link">Explore mobile source ↗</a></div></article>
+
+<article class="tool-card">
+    <div class="tool-card-image">
+        <figure class="guide-image">
+            <img src="assets/images/win-map-builder.jpg" >
+        </figure>
+    </div>
+    <div class="tool-card-body">
+        <p class="eyebrow">WEB / WINDOWS</p>
+        <h3>MapBuilder</h3>
+        <p>Calibrate a map image against real-world GPS reference points. Use the browser version or the Windows application; both share the same project format and export 
+            compatible site packages.
+        </p>
+        <a href="map-builder/index.html" class="text-link">Launch Web MapBuilder ↗</a>
+        <a href="https://github.com/tonygoacher/CombatLR/tree/main/CombatlrMapBuilder" target="_blank" rel="noopener" class="text-link">Windows app &amp; source ↗</a>
+    </div>
+</article>
+
+<article class="tool-card">
+    <div class="tool-card-image">
+        <figure class="guide-image">
+            <img src="assets/images/gps-simulator.jpg" >
+        </figure>
+    </div>
+    <div class="tool-card-body">
+
+        <p class="eyebrow">WINDOWS</p>
+        <h3>GPS Simulator</h3>
+        <p>Feed simulated NMEA GPS data to a game unit during development, testing and setup.</p>
+        <a href="https://github.com/tonygoacher/CombatLR" target="_blank" rel="noopener" class="text-link">Explore source ↗</a>
+    </div>
+</article>
+
+<article class="tool-card">
+<div class="tool-card-image">
+        <figure class="guide-image">
+            <img src="assets/images/mobileapp.jpg" >
+        </figure>
+    </div>
+    <div class="tool-card-body">
+        <p class="eyebrow">.NET MAUI / ANDROID</p>
+        <h3>CombatLR Mobile</h3>
+        <p>Prepare game plans, manage players and teams, discover units and control a game.</p>
+        <a href="https://github.com/tonygoacher/CombatLR/tree/main/CombatLR.mobile" target="_blank" rel="noopener" class="text-link">Explore mobile source ↗</a>
+    </div>
+</article>
+
 </div></div></section>
 
 
@@ -108,9 +153,44 @@
 <section class="mobile-screenshot-section section" id="game-planning"><div class="container mobile-screenshot"><div class="mobile-screenshot-copy"><p class="eyebrow">GAME PLAN EDITOR</p><h2>Design the match.</h2><p>Place pickups and define the play area directly on the map. Decide where players can find supplies and how the changing zones shape the match.</p></div><figure><img src="assets/images/pickups.webp" alt="CombatLR Mobile pickup editor showing pickup locations marked across the game map, with zone boundaries and game object controls"><figcaption>Pickup placement and game-object editing in CombatLR Mobile</figcaption></figure></div></section>
 
 <section class="hardware section" id="hardware"><div class="container hardware-layout">
-<div class="hardware-visual"><div class="hardware-chip"><span>ESP32</span><i>COMBATLR<br>PLAYER UNIT</i><b>GPS · IR · AUDIO · DISPLAY</b></div><p class="hardware-caption">CUSTOM ELECTRONICS / EMBEDDED FIRMWARE</p></div>
-<div class="hardware-copy"><p class="eyebrow">04 / THE HARDWARE</p><h2>Built to be<br><span>built again.</span></h2><p class="large-copy">Each player carries a self-contained ESP32-based game unit. The hardware and firmware are part of the open project, so others can inspect, reproduce and adapt the design.</p>
-<ul class="hardware-features"><li><strong>ESP32-powered</strong><span>Runs the game logic and manages the player experience.</span></li><li><strong>GPS positioning and time</strong><span>Provides location and shared timing for synchronised zones.</span></li><li><strong>Infrared combat</strong><span>Handles firing and hit detection between player units.</span></li><li><strong>Audio and display</strong><span>Local sound and on-device game information.</span></li><li><strong>Wireless setup</strong><span>Load game plans and update firmware without a wired connection.</span></li><li><strong>Open design</strong><span>Explore the source and hardware resources to build your own.</span></li></ul></div>
+<div class="hardware-visual">
+    <div class="hardware-chip">
+         <figure class="hardware-image">
+            <img src="assets/images/pcb.jpg" >
+        </figure>
+    </div>
+    <br>
+<div class="hardware-copy"><p class="eyebrow">04 / THE HARDWARE</p><h2>Designed for<br><span>DIY.</span></h2><p class="large-copy">Each player carries a self-contained ESP32-based game unit. The hardware and firmware are part of the open project, so others can inspect, reproduce and adapt the design.</p>
+<ul class="hardware-features">
+    <li>
+        <strong>ESP32-powered</strong><span>Runs the game logic and manages the player experience.</span>
+    </li>
+    <li>
+        <strong>GPS positioning and time</strong><span>Provides location and shared timing for synchronised zones.</span>
+    </li>
+    <li>
+        <strong>Infrared combat</strong><span>Handles firing and hit detection between player units.</span>
+    </li>
+    <li>
+        <strong>Data driven weapons</strong><span>Add new weapons by editing a file and adding new graphics and sound files.</span>
+    </li>
+    <li>
+        <strong>Audio and display</strong>  
+        <span>ESP32 stores sounds as .WAV files (mono, 16kHz). Change them if you wish using FTP mode.</span>
+        <span>Low cost 2" LCD display is readily available.</span>
+    </li>
+    <li>
+        <strong>Wireless setup</strong>
+        <span>Load game plans and update firmware without a wired connection.</span>
+    </li>
+    <li>
+        <strong>Open design</strong><span>Explore the source and hardware resources to build your own.</span>
+    </li>
+    <li>
+        <strong>Manageable Components</strong>
+        <span>Easily sourced components. Some surface mound devices are used to keep the size down, but nothing smaller than 0805. Easy for any competent hobbyist.</span>
+    </li>
+</ul></div>
 </div></section>
 
 <section class="resources section" id="resources"><div class="container"><div class="section-heading"><div><p class="eyebrow">05 / OPEN PROJECT</p><h2>Make it yours.<br><span>Build, explore, contribute.</span></h2></div><p>CombatLR is being developed as an open source project. Browse the code, get the releases, find the build resources and make your own version.</p></div>
