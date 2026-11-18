@@ -349,7 +349,7 @@
 
 .open-hero .hero-gallery img {
     width: 100%;
-    height: 76px;
+    height: 99px;
     aspect-ratio: auto;
     object-fit: contain;
 }
@@ -379,6 +379,6 @@
     }
 
     .open-hero .hero-gallery img {
-        height: 68px;
+        height: 88px;
     }
 }
